@@ -14,6 +14,9 @@ DATA_WITH_TEST	=	src/Test.cpp\
 
 NAME	=	Zelda
 
+FLAGG		=	`sdl-config --cflags --libs`\
+				`sdl2-config --cflags --libs`\
+
 VERSION	=	-std=c++2a\
 
 all:
@@ -21,10 +24,21 @@ all:
 	@(g++ -o $(NAME) $(DATA_WITHOUT_TEST) $(VERSION)) && echo "Compiling success" || echo "Compiling failed"
 	@(mv $(NAME) bin/$(NAME))
 
-compile_test:
-	@(echo "Compiling Test...")
-	#@(for i in $(DATA_WITH_TEST); do g++ -o $(i:src/Test:Test) $(i) $(VERSION); done)
-	@(g++ -o test/Window src/Window/*.cpp $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
+test_window:
+	@(echo "Compiling Test Window...")
+	@(g++ -o test/Window src/Window/*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
+
+test_main:
+	@(echo "Compiling Test Main...")
+	@(g++ -o test/Main src/Test.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
+
+test_game:
+	@(echo "Compiling Test Game...")
+	@(g++ -o test/Game src/Game/*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
+
+test_pixel:
+	@(echo "Compiling Test Pixel...")
+	@(g++ -o test/Pixel src/Pixel/*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
 
 delete:
 	@(echo "Deleting...")
