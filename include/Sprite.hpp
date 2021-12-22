@@ -1,17 +1,13 @@
 #pragma once
 
 #include <iostream>
-#include <vector>
+
+#include "Struct/Tab2D.hpp"
 #include "Pixel.hpp"
 
 class Sprite : public Pixel {
 private:
-    int m_Height;
-    int m_Width;
-
-    int m_PixelNumber = 0;
-
-    Pixel m_pixels[10];
+    Tab2D<Pixel> *m_pixels;
 
 protected:
     void setX(int x);
