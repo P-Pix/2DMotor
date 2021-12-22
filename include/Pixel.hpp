@@ -5,15 +5,15 @@
 
 class Pixel {
 private:
-    SDL_Rect* m_rect;
-    SDL_Color m_color;
-    SDL_Renderer* m_renderer;
-    SDL_Texture* m_texture;
+    SDL_Rect* m_rect = nullptr;
+    SDL_Color m_color = {0, 0, 0, 0};
+    SDL_Renderer* m_renderer = nullptr;
+    SDL_Texture* m_texture = nullptr;
 
-    Uint8 m_r;
-    Uint8 m_g;
-    Uint8 m_b;
-    Uint8 m_a;
+    Uint8 m_r = 0;
+    Uint8 m_g = 0;
+    Uint8 m_b = 0;
+    Uint8 m_a = 0;
 
     void createRect(int x, int y, int w, int h);
     void createTexture(void);
@@ -34,6 +34,7 @@ protected:
     void updateColor(void);
 
 public:
+    Pixel(void);
     Pixel(int x, int y, int w, int h, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
     ~Pixel(void);
     void render(void);
@@ -41,5 +42,6 @@ public:
     int getY(void);
     int getW(void);
     int getH(void);
+    SDL_Rect* getRect(void);
     SDL_Color getColor(void);
 };

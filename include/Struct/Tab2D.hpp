@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 
 template <typename T>
@@ -8,7 +10,7 @@ struct Tab2D {
 };
 
 template <typename T>
-Tab2D<T> *createTab2D(size_t width, size_t height) {
+Tab2D<T> *Tab2D_Create(size_t width, size_t height) {
     Tab2D<T> *tab = new Tab2D<T>;
     tab->width = width;
     tab->height = height;
@@ -20,7 +22,7 @@ Tab2D<T> *createTab2D(size_t width, size_t height) {
 }
 
 template <typename T>
-void initPointer(Tab2D<T> *tab) {
+void Tab2D_InitPointer(Tab2D<T> *tab) {
     if (tab == nullptr) {
         tab = new Tab2D<T>;
     }
@@ -32,7 +34,7 @@ void initPointer(Tab2D<T> *tab) {
 }
 
 template <typename T>
-void initValue(Tab2D<T> *tab) {
+void Tab2D_InitValue(Tab2D<T> *tab) {
     if (tab == nullptr) {
         tab = new Tab2D<T>;
     }
@@ -44,7 +46,7 @@ void initValue(Tab2D<T> *tab) {
 }
 
 template <typename T>
-void initChar(Tab2D<T> *tab) {
+void Tab2D_InitChar(Tab2D<T> *tab) {
     if (tab == nullptr) {
         tab = new Tab2D<T>;
     }
@@ -56,16 +58,23 @@ void initChar(Tab2D<T> *tab) {
 }
 
 template <typename T>
-void deleteTab2D(Tab2D<T> *tab) {
+void Tab2D_Delete(Tab2D<T> *tab) {
+    if (tab == nullptr) {
+        return;
+    }
     for (size_t i = 0; i < tab->height; i++) {
         delete[] tab->tab[i];
     }
     delete[] tab->tab;
     delete tab;
+    return;
 }
 
 template <typename T>
-void printTab2D(Tab2D<T> *tab) {
+void Tab2D_Print(Tab2D<T> *tab) {
+    if (tab == nullptr) {
+        return;
+    }
     for (size_t i = 0; i < tab->height; i++) {
         for (size_t j = 0; j < tab->width; j++) {
             std::cout << tab->tab[i][j] << " ";
@@ -75,6 +84,17 @@ void printTab2D(Tab2D<T> *tab) {
 }
 
 template <typename T>
-void setTab2D(Tab2D<T> *tab, size_t x, size_t y, T value) {
+void Tab2D_Set(Tab2D<T> *tab, size_t x, size_t y, T value) {
+    if (tab == nullptr) {
+        return;
+    }
     tab->tab[y][x] = value;
+}
+
+template <typename T>
+T Tab2D_Get(Tab2D<T> *tab, size_t x, size_t y) {
+    if (tab == nullptr) {
+        return 0;
+    }
+    return tab->tab[y][x];
 }

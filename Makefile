@@ -17,6 +17,7 @@ NAME	=	Zelda
 FLAGG		=	`sdl-config --cflags --libs`\
 				`sdl2-config --cflags --libs`\
 				-lSDL2 -lSDL2_image\
+				-lsfml-graphics -lsfml-window -lsfml-system\
 
 VERSION	=	-std=c++2a\
 
@@ -43,7 +44,11 @@ test_pixel:
 
 test_imageinterpretor:
 	@(echo "Compiling Test Image Interpretor...")
-	@(g++ -o test/ImageInterpretor src/ImageInterpretor/*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
+	@(g++ -o test/ImageInterpretor src/ImageInterpretor/*.cpp src/Pixel/[^Test]*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
+
+test_sprite:
+	@(echo "Compiling Test Image Sprite...")
+	@(g++ -o test/Sprite src/Sprite/*.cpp src/ImageInterpretor/[^Test]*.cpp src/Pixel/[^Test]*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
 
 delete:
 	@(echo "Deleting...")

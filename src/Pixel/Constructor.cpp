@@ -1,5 +1,9 @@
 #include "../../include/Pixel.hpp"
 
+Pixel::Pixel(void) {
+
+}
+
 Pixel::Pixel(int x, int y, int w, int h, Uint8 r, Uint8 g, Uint8 b, Uint8 a) {
     this->setR(r);
     this->setG(g);
@@ -10,7 +14,6 @@ Pixel::Pixel(int x, int y, int w, int h, Uint8 r, Uint8 g, Uint8 b, Uint8 a) {
     this->createTexture();
     this->linkColorAndTexture();
     this->linkRectAndTexture();
-    std::cout << "No error" << std::endl;
 }
 
 Pixel::~Pixel() {

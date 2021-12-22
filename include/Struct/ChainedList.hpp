@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 
 template <typename T>
@@ -7,7 +9,7 @@ struct ChainedList {
 };
 
 template <typename T>
-ChainedList<T> *createChainedList(T data) {
+ChainedList<T> *ChainedList_Create(T data) {
     ChainedList<T> *list = new ChainedList<T>;
     list->data = data;
     list->next = nullptr;
@@ -15,10 +17,10 @@ ChainedList<T> *createChainedList(T data) {
 }
 
 template <typename T>
-void deleteChainedList(ChainedList<T> *list) {
+void ChainedList_Delete(ChainedList<T> *list) {
     if (list == nullptr) {
         return;
     }
-    deleteChainedList(list->next);
+    ChainedList_Delete(list->next);
     delete list;
 }

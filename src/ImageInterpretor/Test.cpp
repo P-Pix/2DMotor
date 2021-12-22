@@ -3,6 +3,6 @@
 #include <iostream>
 
 int main(int argc, char** argv) {
-    ImageInterpretor imageInterpretor("image/im.jpg");
+    ImageInterpretor imageInterpretor(argv[1]);
     return EXIT_SUCCESS;
 }
