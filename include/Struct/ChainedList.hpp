@@ -24,3 +24,9 @@ void ChainedList_Delete(ChainedList<T> *list) {
     ChainedList_Delete(list->next);
     delete list;
 }
+
+template <typename T>
+ChainedList<T> *ChainedList_Set(ChainedList<T> *list, T data) {
+    list->data = data;
+    return list;
+}

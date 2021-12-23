@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "../Struct/Tab2D.hpp"
+#include "../Struct/ChainedList.hpp"
 #include "ImageInterpretor.hpp"
 #include "Pixel.hpp"
 
@@ -22,5 +23,6 @@ public:
     virtual ~Sprite();
 
     void move(int x, int y);
+    ChainedList<Pixel *> *getListPixel(void);
     //void setSize(int multiply);
 };

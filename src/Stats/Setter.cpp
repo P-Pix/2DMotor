@@ -1,4 +1,4 @@
-#include "../../include/Stats.hpp"
+#include "../../include/Game/Stats.hpp"
 
 void Stats::setMaxHp(Uint8 hp) {
     this->m_MaxHp = hp;

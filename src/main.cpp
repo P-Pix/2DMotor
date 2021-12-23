@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../include/Game.hpp"
+#include "../include/Game/Game.hpp"
 
 #ifndef _MAIN_CPP_
 #define _MAIN_CPP_

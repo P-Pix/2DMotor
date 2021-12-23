@@ -46,4 +46,6 @@ public:
     void subSpeed(Uint8 speed);
     void subStrength(Uint8 strength);
     void subDefense(Uint8 defense);
+
+    void print(void) const;
 };
