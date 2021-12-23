@@ -8,7 +8,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Pixel.hpp"
-#include "Struct/Tab2D.hpp"
+#include "../Struct/Tab2D.hpp"
 
 class ImageInterpretor {
 private:
@@ -36,9 +36,11 @@ public:
     ImageInterpretor(void);
     ImageInterpretor(std::string fileName);
     ~ImageInterpretor(void);
+
     Tab2D<Uint8> *getR(void) const;
     Tab2D<Uint8> *getG(void) const;
     Tab2D<Uint8> *getB(void) const;
     Tab2D<Uint8> *getA(void) const;
+
     Tab2D<Pixel *> *getPixels(void) const;
 };

@@ -1,4 +1,4 @@
-#include "../../include/ImageInterpretor.hpp"
+#include "../../include/Sprite/ImageInterpretor.hpp"
 
 #include <iostream>
 

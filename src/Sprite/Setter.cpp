@@ -1,4 +1,4 @@
-#include "../../include/Sprite.hpp"
+#include "../../include/Sprite/Sprite.hpp"
 
 void Sprite::setX(int x) {
     for (int i = 0; i < this->m_PixelTab->height; i++) {

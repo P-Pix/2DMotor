@@ -1,4 +1,4 @@
-#include "../../include/Sprite.hpp"
+#include "../../include/Sprite/Sprite.hpp"
 
 Sprite::Sprite(std::string fileName) {
     ImageInterpretor imageInterpretor(fileName);

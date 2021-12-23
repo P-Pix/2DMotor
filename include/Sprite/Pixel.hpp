@@ -10,38 +10,38 @@ private:
     SDL_Renderer* m_renderer = nullptr;
     SDL_Texture* m_texture = nullptr;
 
-    Uint8 m_r = 0;
-    Uint8 m_g = 0;
-    Uint8 m_b = 0;
-    Uint8 m_a = 0;
-
     void createRect(int x, int y, int w, int h);
     void createTexture(void);
     void linkColorAndTexture(void);
     void linkRectAndTexture(void);
 
 protected:
-    void setX(int x);
-    void setY(int y);
-    void setW(int w);
-    void setH(int h);
+    void setX(Sint16 x);
+    void setY(Sint16 y);
+    void setW(Uint8 w);
+    void setH(Uint8 h);
 
     void setR(Uint8 r);
     void setG(Uint8 g);
     void setB(Uint8 b);
     void setA(Uint8 a);
     void setColor(SDL_Color color);
-    void updateColor(void);
 
 public:
     Pixel(void);
     Pixel(int x, int y, int w, int h, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
     ~Pixel(void);
     void render(void);
-    int getX(void);
-    int getY(void);
-    int getW(void);
-    int getH(void);
+
+    Sint16 getX(void);
+    Sint16 getY(void);
+    Uint8 getW(void);
+    Uint8 getH(void);
     SDL_Rect* getRect(void);
+
+    Uint8 getR(void);
+    Uint8 getG(void);
+    Uint8 getB(void);
+    Uint8 getA(void);
     SDL_Color getColor(void);
 };

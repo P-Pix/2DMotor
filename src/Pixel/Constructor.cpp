@@ -1,15 +1,11 @@
-#include "../../include/Pixel.hpp"
+#include "../../include/Sprite/Pixel.hpp"
 
 Pixel::Pixel(void) {
 
 }
 
 Pixel::Pixel(int x, int y, int w, int h, Uint8 r, Uint8 g, Uint8 b, Uint8 a) {
-    this->setR(r);
-    this->setG(g);
-    this->setB(b);
-    this->setA(a);
-    this->updateColor();
+    this->setColor(SDL_Color{r, g, b, a});
     this->createRect(x, y, w, h);
     this->createTexture();
     this->linkColorAndTexture();
@@ -37,6 +33,6 @@ void Pixel::linkColorAndTexture(void) {
 
 void Pixel::linkRectAndTexture(void) {
     SDL_SetRenderTarget(this->m_renderer, this->m_texture);
-    SDL_RenderCopy(this->m_renderer, this->m_texture, NULL, this->m_rect);
-    SDL_SetRenderTarget(this->m_renderer, NULL);
+    SDL_RenderCopy(this->m_renderer, this->m_texture, nullptr, this->m_rect);
+    SDL_SetRenderTarget(this->m_renderer, nullptr);
 }

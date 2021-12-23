@@ -1,4 +1,4 @@
-#include "../../include/ImageInterpretor.hpp"
+#include "../../include/Sprite/ImageInterpretor.hpp"
 
 ImageInterpretor::ImageInterpretor(void) {
 }
@@ -76,6 +76,7 @@ void ImageInterpretor::resetTab2D(int width, int height) {
 }
 
 void ImageInterpretor::readImage(const char *fileName) {
+    // I need it with SDL but I don't know how
     sf::Image image;
     image.loadFromFile(fileName);
     this->m_width = image.getSize().x;
@@ -94,17 +95,13 @@ void ImageInterpretor::createListPixel(void) {
     Tab2D_InitPointer(this->m_pixels);
     for (int y = 0; y < this->m_height; y++) {
         for (int x = 0; x < this->m_width; x++) {
-            std::cout << "---------- " << y << " - " << x << " ----------" << std::endl;
             if (Tab2D_Get(this->m_a, x, y) != 0) {
-                std::cout << "make pixel" << std::endl;
                 Pixel pixel(x, y, 1, 1,
-                             Tab2D_Get(this->m_r, x, y),
-                             Tab2D_Get(this->m_g, x, y),
-                             Tab2D_Get(this->m_b, x, y),
-                             Tab2D_Get(this->m_a, x, y));
-                std::cout << "pixel created" << std::endl;
+                            Tab2D_Get(this->m_r, x, y),
+                            Tab2D_Get(this->m_g, x, y),
+                            Tab2D_Get(this->m_b, x, y),
+                            Tab2D_Get(this->m_a, x, y));
                 Tab2D_Set(this->m_pixels, x, y, &pixel);
-                std::cout << "pixel added" << std::endl;
             }
         }
     }

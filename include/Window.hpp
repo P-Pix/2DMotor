@@ -5,7 +5,7 @@
 
 #include <SDL2/SDL.h>
 
-#include "Sprite.hpp"
+#include "Sprite/Sprite.hpp"
 
 class Window {
 private:

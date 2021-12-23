@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "Struct/Tab2D.hpp"
+#include "../Struct/Tab2D.hpp"
 #include "ImageInterpretor.hpp"
 #include "Pixel.hpp"
 
