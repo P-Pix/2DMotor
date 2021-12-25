@@ -8,6 +8,7 @@
 namespace Sprite {
     class Pixel : public Rectangle {
     private:
+        void init(SDL_Renderer *renderer, int x, int y, SDL_Color *color);
 
     protected:
 

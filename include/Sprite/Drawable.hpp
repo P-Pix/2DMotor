@@ -13,14 +13,17 @@ namespace Sprite {
 
         SDL_Color *m_Color = nullptr;
         SDL_Renderer *m_Renderer = nullptr;
+
+        void init(SDL_Renderer *renderer, int x, int y, SDL_Color *color);
+
     protected:
 
     public:
         Drawable(void);
 
-        Drawable(int x, int y, SDL_Color *color, SDL_Renderer *renderer);
+        Drawable(SDL_Renderer *renderer, int x, int y, SDL_Color *color);
 
-        Drawable(int x, int y, Uint8 r, Uint8 g, Uint8 b, Uint8 a, SDL_Renderer *renderer);
+        Drawable(SDL_Renderer *renderer, int x, int y, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 
         ~Drawable(void);
 
