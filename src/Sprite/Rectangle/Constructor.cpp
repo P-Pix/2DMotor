@@ -14,7 +14,6 @@ Sprite::Rectangle::Rectangle(SDL_Renderer *renderer, int x, int y, int w, int h,
 }
 
 Sprite::Rectangle::~Rectangle(void) {
-
 }
 
 void Sprite::Rectangle::init(SDL_Renderer *renderer, int x, int y, int width, int height, SDL_Color* color) {

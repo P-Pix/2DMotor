@@ -21,5 +21,4 @@ void Sprite::Drawable::init(SDL_Renderer *renderer, int x, int y, SDL_Color *col
 }
 
 Sprite::Drawable::~Drawable(void) {
-
 }

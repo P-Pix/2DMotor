@@ -15,6 +15,7 @@ Sprite::Pixel::Pixel(SDL_Renderer *renderer, int x, int y, SDL_Color *color) {
 }
 
 Sprite::Pixel::~Pixel() {
+
 }
 
 void Sprite::Pixel::init(SDL_Renderer *renderer, int x, int y, SDL_Color *color) {

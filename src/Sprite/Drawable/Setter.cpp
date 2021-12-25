@@ -2,6 +2,7 @@
 
 void Sprite::Drawable::setColor(SDL_Color *color) {
     this->m_Color = color;
+    std::cout << (int)this->m_Color->r << " " << (int)this->m_Color->g << " " << (int)this->m_Color->b << " " << (int)this->m_Color->a << std::endl;
 }
 
 void Sprite::Drawable::setRenderer(SDL_Renderer* renderer) {

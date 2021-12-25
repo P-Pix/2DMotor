@@ -74,7 +74,7 @@ test_pixel:
 
 test_imageinterpretor:
 	@(echo "Compiling Test Image Interpretor...")
-	@(g++ -o test/ImageInterpretor src/ImageInterpretor/*.cpp src/Pixel/[^Test]*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
+	@(g++ -o test/Sprite/ImageInterpretor src/Sprite/ImageInterpretor/*.cpp src/Sprite/Pixel/[^Test]*.cpp src/Sprite/Rectangle/[^Test]*.cpp src/Sprite/Drawable/[^Test]*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
 
 test_sprite:
 	@(echo "Compiling Test Image Sprite...")
