@@ -8,6 +8,6 @@ int Sprite::Rectangle::getHeight(void) {
     return this->m_height;
 }
 
-SDL_Rect Sprite::Rectangle::getRect(void) {
-    return this->m_Rect;
+SDL_Rect *Sprite::Rectangle::getRect(void) {
+    return &this->m_Rect;
 }

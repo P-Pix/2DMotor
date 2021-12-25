@@ -14,5 +14,5 @@ ImageInterpretor::~ImageInterpretor(void) {
 }
 
 void ImageInterpretor::deleteTab2D(void) {
-    Tab2D_Delete(this->m_pixels);
+    Tab2D_Delete(this->m_Tab2DPixel);
 }

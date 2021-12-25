@@ -12,12 +12,12 @@
 
 class ImageInterpretor {
 private:
-    Tab2D<Sprite::Pixel *> *m_pixels = nullptr;
+    Tab2D<Sprite::Pixel *> *m_Tab2DPixel = nullptr;
 
     SDL_Renderer *m_Renderer = nullptr;
 
-    int m_width = 0;
-    int m_height = 0;
+    int m_WidthImage = 0;
+    int m_HeightImage = 0;
 
     Uint32 getPixel(SDL_Surface *surface, int x, int y);
     void putPixelValue(SDL_Surface *surface, int x, int y);
@@ -36,4 +36,6 @@ public:
     void setRender(SDL_Renderer *renderer);
 
     Tab2D<Sprite::Pixel *> *getPixels(void) const;
+    int getWidth(void) const;
+    int getHeight(void) const;
 };

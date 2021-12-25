@@ -11,7 +11,7 @@ namespace Sprite {
 
         SDL_Rect m_Rect;
 
-        void init(SDL_Renderer *renderer, int x, int y, int width, int height, SDL_Color *color);
+        void init(SDL_Renderer *renderer, int x, int y, int width, int height, SDL_Color color);
 
     protected:
 
@@ -20,7 +20,7 @@ namespace Sprite {
 
         Rectangle(SDL_Renderer *renderer, int x, int y, int w, int h, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 
-        Rectangle(SDL_Renderer *renderer, int x, int y, int w, int h, SDL_Color *color);
+        Rectangle(SDL_Renderer *renderer, int x, int y, int w, int h, SDL_Color color);
 
         ~Rectangle(void);
 
@@ -30,7 +30,7 @@ namespace Sprite {
 
         int getHeight(void);
 
-        SDL_Rect getRect(void);
+        SDL_Rect *getRect(void);
 
         void setRect(SDL_Rect rect);
 

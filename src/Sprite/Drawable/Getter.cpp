@@ -9,7 +9,7 @@ int Sprite::Drawable::getY(void) {
 }
 
 SDL_Color *Sprite::Drawable::getColor(void) {
-    return this->m_Color;
+    return &this->m_Color;
 }
 
 SDL_Renderer *Sprite::Drawable::getRenderer(void) {
@@ -17,17 +17,17 @@ SDL_Renderer *Sprite::Drawable::getRenderer(void) {
 }
 
 Uint8 Sprite::Drawable::getA(void) {
-    return this->m_Color->a;
+    return this->m_Color.a;
 }
 
 Uint8 Sprite::Drawable::getR(void) {
-    return this->m_Color->r;
+    return this->m_Color.r;
 }
 
 Uint8 Sprite::Drawable::getG(void) {
-    return this->m_Color->g;
+    return this->m_Color.g;
 }
 
 Uint8 Sprite::Drawable::getB(void) {
-    return this->m_Color->b;
+    return this->m_Color.b;
 }

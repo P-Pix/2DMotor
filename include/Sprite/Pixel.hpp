@@ -8,7 +8,7 @@
 namespace Sprite {
     class Pixel : public Rectangle {
     private:
-        void init(SDL_Renderer *renderer, int x, int y, SDL_Color *color);
+        void init(SDL_Renderer *renderer, int x, int y, SDL_Color color);
 
     protected:
 
@@ -17,7 +17,7 @@ namespace Sprite {
 
         Pixel(SDL_Renderer *renderer, int x, int y, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 
-        Pixel(SDL_Renderer *renderer, int x, int y, SDL_Color *color);
+        Pixel(SDL_Renderer *renderer, int x, int y, SDL_Color color);
 
         ~Pixel(void);
     };
