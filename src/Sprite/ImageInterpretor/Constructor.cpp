@@ -1,4 +1,4 @@
-#include "../../include/Sprite/ImageInterpretor.hpp"
+#include "../../../include/Sprite/ImageInterpretor.hpp"
 
 ImageInterpretor::ImageInterpretor(void) {
 }

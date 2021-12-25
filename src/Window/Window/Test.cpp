@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "../../include/Window/Window.hpp"
+#include "../../../include/Window/Window.hpp"
 
 int main(int argc, char *argv[]) {
     std::cout << "Test Window" << std::endl;

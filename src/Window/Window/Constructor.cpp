@@ -1,4 +1,4 @@
-#include "../../include/Window/Window.hpp"
+#include "../../../include/Window/Window.hpp"
 
 Window::Window(void) {
     this->init();
@@ -12,13 +12,20 @@ Window::~Window(void) {
 }
 
 bool Window::update(ChainedList<Sprite *> *list) {
-    while (list != nullptr){
+    while (list != nullptr) {
         ChainedList<Pixel *> *listPixel = list->data->getListPixel();
-        while (listPixel != nullptr) {
-            if(!this->drawRect(listPixel->data->getRect())) {
-                return false;
-            }
-            listPixel = listPixel->next;
+        if (!this->update(listPixel)) {
+            return false;
+        }
+        list = list->next;
+    }
+    return true;
+}
+
+bool Window::update(ChainedList<Pixel *> *list) {
+    while (list != nullptr) {
+        if (!this->drawRect(list->data->getRect())) {
+            return false;
         }
         list = list->next;
     }

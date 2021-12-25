@@ -3,15 +3,13 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 
-#include "../Struct/ChainedList.hpp"
+#include "../Struct/ChainedList.h"
 #include "../Sprite/Sprite.hpp"
 
 class Window {
 private:
     SDL_Window* m_Window = nullptr;
     SDL_Renderer* m_Renderer = nullptr;
-
-    ChainedList<Sprite *> *m_ListSprite;
 
     bool init(void);
     void close(void);
@@ -23,6 +21,11 @@ private:
 
     void destroyWindow(void);
     void destroyRenderer(void);
+    ChainedList<Sprite *> *m_ListSprite = nullptr;
+
+    void setListSprite(ChainedList<Sprite *> *listSprite) {
+        this->m_ListSprite = listSprite;
+    }
 
 public:
     Window(void);
@@ -30,5 +33,10 @@ public:
 
     bool isOpen(void) const;
     bool update(ChainedList<Sprite *> *list);
+    bool update(ChainedList<Pixel *> *list);
     bool restart(void);
+
+    ChainedList<Sprite *> *getListSprite(void) {
+        return m_ListSprite;
+    }
 };

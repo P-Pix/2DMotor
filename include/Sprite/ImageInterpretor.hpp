@@ -8,7 +8,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Pixel.hpp"
-#include "../Struct/Tab2D.hpp"
+#include "../Struct/Tab2D.h"
 
 class ImageInterpretor {
 private:
@@ -16,6 +16,7 @@ private:
     Tab2D<Uint8> *m_g = nullptr;
     Tab2D<Uint8> *m_b = nullptr;
     Tab2D<Uint8> *m_a = nullptr;
+    Tab2D<Sprite::Pixel *> *m_pixels = nullptr;
 
     int m_width = 0;
     int m_height = 0;
@@ -28,7 +29,6 @@ private:
     void deleteTab2D(void);
 
 protected:
-    Tab2D<Pixel *> *m_pixels = nullptr;
 
     void readImage(const char *fileName);
     void setImage(std::string image);
@@ -42,5 +42,5 @@ public:
     Tab2D<Uint8> *getB(void) const;
     Tab2D<Uint8> *getA(void) const;
 
-    Tab2D<Pixel *> *getPixels(void) const;
+    Tab2D<Sprite::Pixel *> *getPixels(void) const;
 };

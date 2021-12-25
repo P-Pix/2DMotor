@@ -1,4 +1,4 @@
-#include "../../include/Sprite/Sprite.hpp"
+#include "../../../include/Sprite/Sprite.hpp"
 
 void Sprite::setX(int x) {
     for (int i = 0; i < this->m_PixelTab->height; i++) {
@@ -19,6 +19,6 @@ void Sprite::setY(int y) {
 }
 
 void Sprite::move(int x, int y) {
-    this->setX(x - this->m_x);
-    this->setY(y - this->m_y);
+    this->setX(x + this->m_x);
+    this->setY(y + this->m_y);
 }

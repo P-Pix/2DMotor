@@ -2,8 +2,8 @@
 
 #include <iostream>
 
-#include "../Struct/Tab2D.hpp"
-#include "../Struct/ChainedList.hpp"
+#include "../Struct/Tab2D.h"
+#include "../Struct/ChainedList.h"
 #include "ImageInterpretor.hpp"
 #include "Pixel.hpp"
 
@@ -13,6 +13,7 @@ private:
     int m_y = 0;
 
     Tab2D<Pixel *> *m_PixelTab = nullptr;
+    void init(std::string fileName);
 
 protected:
     void setX(int x);

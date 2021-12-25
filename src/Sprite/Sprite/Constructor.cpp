@@ -1,18 +1,21 @@
-#include "../../include/Sprite/Sprite.hpp"
+#include "../../../include/Sprite/Sprite.hpp"
 
 Sprite::Sprite(std::string fileName) {
-    ImageInterpretor imageInterpretor(fileName);
-    this->m_PixelTab = imageInterpretor.getPixels();
+    this->init(fileName);
 }
 
 Sprite::Sprite(int x, int y, std::string fileName) {
-    ImageInterpretor imageInterpretor(fileName);
-    this->m_PixelTab = imageInterpretor.getPixels();
+    this->init(fileName);
     this->setX(x);
     this->setY(y);
 }
 
 Sprite::~Sprite() {
+}
+
+void Sprite::init(std::string fileName) {
+    ImageInterpretor image(fileName);
+    this->m_PixelTab = image.getPixels();
 }
 
 ChainedList<Pixel *> *Sprite::getListPixel(void) {

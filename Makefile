@@ -1,33 +1,37 @@
 #!bin/bash
 
 DATA	=	src/*.cpp\
-			src/Game/*.cpp\
-			src/Window/*.cpp\
-			src/ImageInterpretor/*.cpp\
-			src/Operator/*.cpp\
-			src/Pixel/*.cpp\
-			src/Sprite/*.cpp\
-			src/Stats/*.cpp\
+			\
+			src/Sprite/Circle/*.cpp\
+			src/Sprite/Drawable/*.cpp\
+			src/Sprite/ImageInterpretor/*.cpp\
+			src/Sprite/Pixel/*.cpp\
+			src/Sprite/Rectangle/*.cpp\
+			src/Sprite/Sprite/*.cpp\
+			\
+			src/Window/Window/*.cpp\
 
 DATA_WITHOUT_TEST	=	src/[^Test]*.cpp\
-						src/Game/[^Test]*.cpp\
-						src/Window/[^Test]*.cpp\
-						src/ImageInterpretor/[^Test]*.cpp\
-						src/Operator/[^Test]*.cpp\
-						src/Pixel/[^Test]*.cpp\
-						src/Sprite/[^Test]*.cpp\
-						src/Stats/[^Test]*.cpp\
+						\
+						src/Sprite/Circle/[^Test]*.cpp\
+						src/Sprite/Drawable/[^Test]*.cpp\
+						src/Sprite/ImageInterpretor/[^Test]*.cpp\
+						src/Sprite/Pixel/[^Test]*.cpp\
+						src/Sprite/Rectangle/[^Test]*.cpp\
+						src/Sprite/Sprite/[^Test]*.cpp\
+						\
+						src/Window/Window/[^Test]*.cpp\
 
 DATA_WITH_TEST	=	src/Test.cpp\
-					src/Game/Test.cpp\
-					src/Window/Test.cpp\
-					src/ImageInterpretor/Test.cpp\
-					src/Operator/Test.cpp\
-					src/Pixel/Test.cpp\
-					src/Sprite/Test.cpp\
-					src/Stats/Test.cpp\
-
-NAME	=	Zelda
+					\
+					src/Sprite/Circle/Test.cpp\
+					src/Sprite/Drawable/Test.cpp\
+					src/Sprite/ImageInterpretor/Test.cpp\
+					src/Sprite/Pixel/Test.cpp\
+					src/Sprite/Rectangle/Test.cpp\
+					src/Sprite/Sprite/Test.cpp\
+					\
+					src/Window/Window/Test.cpp\
 
 FLAGG		=	`sdl-config --cflags --libs`\
 				`sdl2-config --cflags --libs`\
@@ -44,38 +48,29 @@ all:
 	@make test_window >/dev/null
 	@echo "Pixel :"
 	@make test_pixel >/dev/null
-	#@echo "Game :"
-	#@make test_game >/dev/null
 	@echo "Main :"
 	@make test_main >/dev/null
 	@echo "Image Interpretor :"
 	@make test_imageinterpretor >/dev/null
 	@echo "Sprite :"
 	@make test_sprite >/dev/null
-	@echo "Stats :"
-	@make test_stats >/dev/null
 	@echo "Done."
 
-total:
-	@(echo "Compiling..." $(NAME))
-	@(g++ -o $(NAME) $(DATA_WITHOUT_TEST) $(FLAGG) $(VERSION)) && echo "Compiling success" || echo "Compiling failed"
-	@(mv $(NAME) bin/$(NAME))
+bin:
+	@echo "Compiling..."
+
 
 test_window:
 	@(echo "Compiling Test Window...")
-	@(g++ -o test/Window src/Window/*.cpp src/Sprite/[^Test]*.cpp src/ImageInterpretor/[^Test]*.cpp src/Pixel/[^Test]*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
+	@(g++ -o test/Window/Window src/Window/Window/*.cpp src/Sprite/Sprite/[^Test]*.cpp src/Sprite/ImageInterpretor/[^Test]*.cpp src/Sprite/Pixel/[^Test]*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
 
 test_main:
 	@(echo "Compiling Test Main...")
 	@(g++ -o test/Main src/Test.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
 
-test_game:
-	@(echo "Compiling Test Game...")
-	@(g++ -o test/Game src/Game/*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
-
 test_pixel:
 	@(echo "Compiling Test Pixel...")
-	@(g++ -o test/Pixel src/Pixel/*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
+	@(g++ -o test/Sprite/Pixel src/Sprite/Pixel/*.cpp src/Sprite/Rectangle/[^Test]*.cpp src/Sprite/Drawable/[^Test]*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
 
 test_imageinterpretor:
 	@(echo "Compiling Test Image Interpretor...")
@@ -83,24 +78,20 @@ test_imageinterpretor:
 
 test_sprite:
 	@(echo "Compiling Test Image Sprite...")
-	@(g++ -o test/Sprite src/Sprite/*.cpp src/ImageInterpretor/[^Test]*.cpp src/Pixel/[^Test]*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
+	@(g++ -o test/Sprite/Sprite src/Sprite/Sprite/*.cpp src/Sprite/ImageInterpretor/[^Test]*.cpp src/Sprite/Pixel/[^Test]*.cpp src/Sprite/Cercle/[^Test]*.cpp src/Sprite/Rectangle/[^Test]*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
 
-test_stats:
-	@(echo "Compiling Test Stats...")
-	@(g++ -o test/Stats src/Stats/*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
+test_drawable:
+	@(echo "Compiling Test Drawable...")
+	@(g++ -o test/Sprite/Drawable src/Sprite/Drawable/*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
+
+test_rectangle:
+	@(echo "Compiling Test Rectangle...")
+	@(g++ -o test/Sprite/Rectangle src/Sprite/Rectangle/*.cpp src/Sprite/Drawable/[^Test]*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
 
 delete:
 	@(echo "Deleting...")
 	@(rm -rf bin/*)
 	@(rm -rf test/*)
+	@(rm -rf test/Window/*)
+	@(rm -rf test/Sprite/*)
 	@(echo "Deleting success")
-
-run:
-	@(echo "Running...")
-	@(./bin/$(NAME))
-	@(echo "Running success")
-
-run_test:
-	@(echo "Running Test...")
-	@(./test/Main $(ARGS))
-	@(echo "Running Test success")
