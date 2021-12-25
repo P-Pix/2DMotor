@@ -78,7 +78,7 @@ test_imageinterpretor:
 
 test_sprite:
 	@(echo "Compiling Test Image Sprite...")
-	@(g++ -o test/Sprite/Sprite src/Sprite/Sprite/*.cpp src/Sprite/ImageInterpretor/[^Test]*.cpp src/Sprite/Pixel/[^Test]*.cpp src/Sprite/Cercle/[^Test]*.cpp src/Sprite/Rectangle/[^Test]*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
+	@(g++ -o test/Sprite/Sprite2D src/Sprite/Sprite2D/*.cpp src/Sprite/ImageInterpretor/[^Test]*.cpp src/Sprite/Pixel/[^Test]*.cpp src/Sprite/Rectangle/[^Test]*.cpp src/Sprite/Drawable/[^Test]*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
 
 test_drawable:
 	@(echo "Compiling Test Drawable...")

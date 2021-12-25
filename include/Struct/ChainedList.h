@@ -30,3 +30,12 @@ ChainedList<T> *ChainedList_Set(ChainedList<T> *list, T data) {
     list->data = data;
     return list;
 }
+
+template <typename T>
+ChainedList<T> *ChainedList_Add(ChainedList<T> *list, T data) {
+    if (list == nullptr) {
+        return ChainedList_Create(data);
+    }
+    list->next = ChainedList_Add(list->next, data);
+    return list;
+}
