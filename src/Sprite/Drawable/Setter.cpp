@@ -22,3 +22,19 @@ void Sprite::Drawable::setX(int x) {
 void Sprite::Drawable::setY(int y) {
     this->m_y = y;
 }
+
+void Sprite::Drawable::setA(Uint8 a) {
+    this->m_Color->a = a;
+}
+
+void Sprite::Drawable::setR(Uint8 r) {
+    this->m_Color->r = r;
+}
+
+void Sprite::Drawable::setG(Uint8 g) {
+    this->m_Color->g = g;
+}
+
+void Sprite::Drawable::setB(Uint8 b) {
+    this->m_Color->b = b;
+}

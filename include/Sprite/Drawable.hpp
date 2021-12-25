@@ -51,6 +51,14 @@ namespace Sprite {
 
         void setColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 
+        void setA(Uint8 a);
+
+        void setR(Uint8 r);
+
+        void setG(Uint8 g);
+
+        void setB(Uint8 b);
+
         void setX(int x);
 
         void setY(int y);
