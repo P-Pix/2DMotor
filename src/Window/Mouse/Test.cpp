@@ -1,6 +1,7 @@
 #include "../../../include/Window/Mouse.hpp"
 
 int main(int argc, char **argv) {
+    std::cout << "Size RAM : " << sizeof(Motor2D::Mouse) << std::endl;
     SDL_Init(SDL_INIT_EVERYTHING);
     SDL_Window *window = SDL_CreateWindow("Test", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, SDL_WINDOW_SHOWN);
     SDL_Event event;

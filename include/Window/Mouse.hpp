@@ -8,6 +8,10 @@
 namespace Motor2D {
     class Mouse : public Motor2D::Event {
     private:
+        SDL_MouseMotionEvent m_Motion;
+        SDL_MouseButtonEvent m_Button;
+        SDL_MouseWheelEvent m_Wheel;
+
         int m_X;
         int m_Y;
 
