@@ -29,6 +29,8 @@ void ImageInterpretor::putPixelValue(SDL_Surface *surface, int x, int y) {
 void ImageInterpretor::putPixelValue(sf::Image *image, int x, int y) {
     sf::Color colorPixel = image->getPixel(x, y);
     SDL_Color color = {colorPixel.r, colorPixel.g, colorPixel.b, colorPixel.a};
-    Tab2D_Set(this->m_Tab2DPixel, x, y,
-              new Sprite::Pixel(this->m_Renderer, x, y, color));
+    if (colorPixel.a != 0) {
+        Tab2D_Set(this->m_Tab2DPixel, x, y,
+                  new Sprite::Pixel(this->m_Renderer, x, y, color));
+    }
 }

@@ -64,6 +64,10 @@ test_window:
 	@(echo "Compiling Test Window...")
 	@(g++ -o test/Window/Window src/Window/Window/*.cpp src/Sprite/Sprite2D/[^Test]*.cpp src/Sprite/ImageInterpretor/[^Test]*.cpp src/Sprite/Pixel/[^Test]*.cpp src/Sprite/Rectangle/[^Test]*.cpp src/Sprite/Drawable/[^Test]*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
 
+test_event:
+	@(echo "Compiling Test Window...")
+	@(g++ -o test/Window/Event src/Window/Event/*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
+
 test_pixel:
 	@(echo "Compiling Test Pixel...")
 	@(g++ -o test/Sprite/Pixel src/Sprite/Pixel/*.cpp src/Sprite/Rectangle/[^Test]*.cpp src/Sprite/Drawable/[^Test]*.cpp $(FLAGG) $(VERSION)) && echo "Compiling Test success" || echo "Compiling Test failed"
@@ -92,7 +96,7 @@ delete:
 	@(rm -rf test/*)
 	@(echo "Deleting success")
 
-test:
+test_:
 	@(echo "Running test...")
 	@(./test/Window/Window)
 	@(./test/Sprite/Pixel)
