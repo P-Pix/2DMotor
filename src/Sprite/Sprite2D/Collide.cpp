@@ -4,11 +4,12 @@ bool Sprite::Sprite2D::collide(Sprite::Sprite2D *s1, Sprite::Sprite2D *s2) {
     ChainedList<Sprite::Pixel *> *pixels1 = Sprite::Sprite2D::outline(s1);
     ChainedList<Sprite::Pixel *> *pixels2 = Sprite::Sprite2D::outline(s2);
     while (pixels1 != nullptr) {
-        while (pixels2 != nullptr) {
+        ChainedList<Sprite::Pixel *> *pixels2_copy = pixels2;
+        while (pixels2_copy != nullptr) {
             if (Sprite::Sprite2D::collide(pixels1->data, pixels2->data)) {
                 return true;
             }
-            pixels2 = pixels2->next;
+            pixels2_copy = pixels2_copy->next;
         }
         pixels1 = pixels1->next;
     }
@@ -29,9 +30,10 @@ ChainedList<Sprite::Pixel *> *Sprite::Sprite2D::outline(Sprite::Sprite2D *s) {
                 if (i == 0 || i == tab->height - 1 || j == 0 || j == tab->width - 1 ||
                     (Tab2D_Get(tab, i - 1, j) == nullptr || Tab2D_Get(tab, i + 1, j) == nullptr ||
                      Tab2D_Get(tab, i, j - 1) == nullptr || Tab2D_Get(tab, i, j + 1) == nullptr)) {
-                    ChainedList_Add(outline, p);
+                    outline = ChainedList_Add(outline, p);
                 }
             }
         }
     }
+    return outline;
 }

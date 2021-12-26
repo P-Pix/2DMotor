@@ -22,3 +22,7 @@ void Sprite::Sprite2D::move(int x, int y) {
     this->setX(x + this->m_XSprite);
     this->setY(y + this->m_YSprite);
 }
+
+void Sprite::Sprite2D::setTab2D(Tab2D<Sprite::Pixel *> *tab2D) {
+    this->m_PixelTab = tab2D;
+}

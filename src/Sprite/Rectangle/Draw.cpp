@@ -1,7 +1,13 @@
 #include "../../../include/Sprite/Rectangle.hpp"
 
 void Sprite::Rectangle::draw(void) {
-    SDL_SetRenderDrawColor(this->getRenderer(), this->getR(), this->getG(), this->getB(),
-                           this->getA());
-    SDL_RenderFillRect(this->getRenderer(), &this->m_Rect);
+    if (SDL_SetRenderDrawColor(this->getRenderer(), this->getR(), this->getG(), this->getB(),
+                               this->getA())) {
+        std::cout << "Error: " << SDL_GetError() << std::endl;
+        exit(EXIT_FAILURE);
+    }
+    if (SDL_RenderFillRect(this->getRenderer(), &this->m_Rect)) {
+        std::cout << "Error: " << SDL_GetError() << std::endl;
+        exit(EXIT_FAILURE);
+    }
 }

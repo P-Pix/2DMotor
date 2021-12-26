@@ -96,5 +96,19 @@ T Tab2D_Get(Tab2D<T> *tab, size_t x, size_t y) {
     if (tab == nullptr) {
         return 0;
     }
+    if (x >= tab->width || y >= tab->height) {
+        return 0;
+    }
+    return tab->tab[y][x];
+}
+
+template <typename T>
+T Tab2D_GetPointer(Tab2D<T> *tab, size_t x, size_t y) {
+    if (tab == nullptr) {
+        return nullptr;
+    }
+    if (x >= tab->width || y >= tab->height) {
+        return nullptr;
+    }
     return tab->tab[y][x];
 }

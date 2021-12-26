@@ -13,14 +13,18 @@ class Sprite2D : public Sprite::Pixel {
         int m_XSprite = 0;
         int m_YSprite = 0;
 
-        Tab2D<Sprite::Pixel *> *m_PixelTab = nullptr;
+        Tab2D<Sprite::Pixel *> *m_PixelTab;
 
         void init(SDL_Renderer *renderer, std::string fileName);
+
+        void deleteTab2D(void);
 
     protected:
         void setX(int x);
 
         void setY(int y);
+
+        void setTab2D(Tab2D<Sprite::Pixel *> *tab2D);
 
     public:
         Sprite2D(SDL_Renderer *renderer, std::string fileName);
@@ -31,7 +35,7 @@ class Sprite2D : public Sprite::Pixel {
 
         void move(int x, int y);
 
-        void draw(void);
+        void draw(void) override;
 
         ChainedList<Sprite::Pixel *> *getListPixel(void);
 

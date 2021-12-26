@@ -4,7 +4,7 @@
 #include <SDL2/SDL.h>
 
 #include "../Struct/ChainedList.h"
-#include "../Sprite/Sprite.hpp"
+#include "../Sprite/Sprite2D.hpp"
 
 class Window {
 private:
@@ -21,9 +21,9 @@ private:
 
     void destroyWindow(void);
     void destroyRenderer(void);
-    ChainedList<Sprite *> *m_ListSprite = nullptr;
+    ChainedList<Sprite::Sprite2D *> *m_ListSprite = nullptr;
 
-    void setListSprite(ChainedList<Sprite *> *listSprite) {
+    void setListSprite(ChainedList<Sprite::Sprite2D *> *listSprite) {
         this->m_ListSprite = listSprite;
     }
 
@@ -32,11 +32,19 @@ public:
     ~Window(void);
 
     bool isOpen(void) const;
-    bool update(ChainedList<Sprite *> *list);
-    bool update(ChainedList<Pixel *> *list);
+    bool update(ChainedList<Sprite::Sprite2D *> *list);
+    bool update(ChainedList<Sprite::Pixel *> *list);
     bool restart(void);
 
-    ChainedList<Sprite *> *getListSprite(void) {
+    SDL_Renderer* getRenderer(void) const {
+        return this->m_Renderer;
+    }
+
+    SDL_Window* getWindow(void) const {
+        return this->m_Window;
+    }
+
+    ChainedList<Sprite::Sprite2D *> *getListSprite(void) {
         return m_ListSprite;
     }
 };

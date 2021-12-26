@@ -11,9 +11,9 @@ Window::~Window(void) {
     this->destroyWindow();
 }
 
-bool Window::update(ChainedList<Sprite *> *list) {
+bool Window::update(ChainedList<Sprite::Sprite2D *> *list) {
     while (list != nullptr) {
-        ChainedList<Pixel *> *listPixel = list->data->getListPixel();
+        ChainedList<Sprite::Pixel *> *listPixel = list->data->getListPixel();
         if (!this->update(listPixel)) {
             return false;
         }
@@ -22,7 +22,7 @@ bool Window::update(ChainedList<Sprite *> *list) {
     return true;
 }
 
-bool Window::update(ChainedList<Pixel *> *list) {
+bool Window::update(ChainedList<Sprite::Pixel *> *list) {
     while (list != nullptr) {
         if (!this->drawRect(list->data->getRect())) {
             return false;

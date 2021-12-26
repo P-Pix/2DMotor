@@ -11,12 +11,13 @@ Sprite::Sprite2D::Sprite2D(SDL_Renderer *renderer, int x, int y, std::string fil
 }
 
 Sprite::Sprite2D::~Sprite2D(void) {
+    this->deleteTab2D();
 }
 
 void Sprite::Sprite2D::init(SDL_Renderer *renderer, std::string fileName) {
     ImageInterpretor image(renderer, fileName);
     this->setRenderer(renderer);
-    this->m_PixelTab = image.getPixels();
+    this->setTab2D(image.getPixels());
 }
 
 ChainedList<Sprite::Pixel *> *Sprite::Sprite2D::getListPixel(void) {
@@ -36,4 +37,8 @@ ChainedList<Sprite::Pixel *> *Sprite::Sprite2D::getListPixel(void) {
 
 Tab2D<Sprite::Pixel *> *Sprite::Sprite2D::getPixelTab(void) {
     return this->m_PixelTab;
+}
+
+void Sprite::Sprite2D::deleteTab2D(void) {
+    Tab2D_Delete(this->m_PixelTab);
 }

@@ -1,9 +1,12 @@
 #include "../../../include/Sprite/Sprite2D.hpp"
 
 void Sprite::Sprite2D::draw(void) {
-    for (int i = 0; i < this->m_PixelTab->height; i++) {
-        for (int j = 0; j < this->m_PixelTab->width; j++) {
-            Sprite::Pixel *pixel = Tab2D_Get(this->m_PixelTab, i, j);
+    if (this->m_PixelTab == nullptr) {
+        return;
+    }
+    for (unsigned int y = 0; y < this->m_PixelTab->height; y++) {
+        for (unsigned int x = 0; x < this->m_PixelTab->width; x++) {
+            Sprite::Pixel *pixel = Tab2D_GetPointer(this->m_PixelTab, x, y);
             if (pixel != nullptr) {
                 pixel->draw();
             }

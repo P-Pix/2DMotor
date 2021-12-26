@@ -10,7 +10,6 @@ ImageInterpretor::ImageInterpretor(SDL_Renderer *renderer, std::string fileName)
 }
 
 ImageInterpretor::~ImageInterpretor(void) {
-    deleteTab2D();
 }
 
 void ImageInterpretor::deleteTab2D(void) {
