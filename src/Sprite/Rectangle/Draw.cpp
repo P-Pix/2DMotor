@@ -1,6 +1,6 @@
 #include "../../../include/Sprite/Rectangle.hpp"
 
-void Sprite::Rectangle::draw(void) {
+void Motor2D::Rectangle::draw(void) {
     if (SDL_SetRenderDrawColor(this->getRenderer(), this->getR(), this->getG(), this->getB(),
                                this->getA())) {
         std::cout << "Error: " << SDL_GetError() << std::endl;

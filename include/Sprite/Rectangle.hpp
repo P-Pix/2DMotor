@@ -3,8 +3,8 @@
 #include <SDL2/SDL.h>
 #include "Drawable.hpp"
 
-namespace Sprite {
-    class Rectangle : public Sprite::Drawable {
+namespace Motor2D {
+    class Rectangle : public Motor2D::Drawable {
     private:
         int m_width = 0;
         int m_height = 0;

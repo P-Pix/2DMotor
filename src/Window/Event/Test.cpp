@@ -1,7 +1,7 @@
 #include "../../../include/Window/Event.hpp"
 
 int main(int argc, char** argv) {
-    Window::Event event;
+    Motor2D::Event event;
     event.poll();
     return EXIT_SUCCESS;
 }

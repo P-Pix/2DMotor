@@ -10,32 +10,42 @@
 #include "Pixel.hpp"
 #include "../Struct/Tab2D.h"
 
-class ImageInterpretor {
-private:
-    Tab2D<Sprite::Pixel *> *m_Tab2DPixel = nullptr;
+namespace Motor2D {
+    class ImageInterpretor {
+    private:
+        Tab2D<Motor2D::Pixel *> *m_Tab2DPixel = nullptr;
 
-    SDL_Renderer *m_Renderer = nullptr;
+        SDL_Renderer *m_Renderer = nullptr;
 
-    int m_WidthImage = 0;
-    int m_HeightImage = 0;
+        int m_WidthImage = 0;
+        int m_HeightImage = 0;
 
-    Uint32 getPixel(SDL_Surface *surface, int x, int y);
-    void putPixelValue(SDL_Surface *surface, int x, int y);
-    void putPixelValue(sf::Image *image, int x, int y);
-    void deleteTab2D(void);
+        Uint32 getPixel(SDL_Surface *surface, int x, int y);
 
-protected:
-    void readImage(const char *fileName);
+        void putPixelValue(SDL_Surface *surface, int x, int y);
 
-public:
-    ImageInterpretor(SDL_Renderer *renderer);
-    ImageInterpretor(SDL_Renderer *renderer ,std::string fileName);
-    ~ImageInterpretor(void);
+        void putPixelValue(sf::Image *image, int x, int y);
 
-    void setImage(std::string image);
-    void setRender(SDL_Renderer *renderer);
+        void deleteTab2D(void);
 
-    Tab2D<Sprite::Pixel *> *getPixels(void) const;
-    int getWidth(void) const;
-    int getHeight(void) const;
-};
+    protected:
+        void readImage(const char *fileName);
+
+    public:
+        ImageInterpretor(SDL_Renderer *renderer);
+
+        ImageInterpretor(SDL_Renderer *renderer, std::string fileName);
+
+        ~ImageInterpretor(void);
+
+        void setImage(std::string image);
+
+        void setRender(SDL_Renderer *renderer);
+
+        Tab2D<Motor2D::Pixel *> *getPixels(void) const;
+
+        int getWidth(void) const;
+
+        int getHeight(void) const;
+    };
+}

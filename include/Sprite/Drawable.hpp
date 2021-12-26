@@ -5,7 +5,7 @@
 
 #include "../Struct/ChainedList.h"
 
-namespace Sprite {
+namespace Motor2D {
     class Drawable {
     private:
         int m_x = 0;

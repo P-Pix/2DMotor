@@ -1,5 +1,5 @@
 #include "../../../include/Window/Window.hpp"
 
-bool Window::isOpen() const {
+bool Motor2D::Window::isOpen() const {
     return true;
 }

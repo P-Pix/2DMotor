@@ -1,19 +1,18 @@
 #include "../../../include/Window/Mouse.hpp"
 
-int Window::Mouse::getX(void) const {
+int Motor2D::Mouse::getX(void) const {
     return this->m_X;
 }
 
-int Window::Mouse::getY(void) const {
+int Motor2D::Mouse::getY(void) const {
     return this->m_Y;
 }
 
-int Window::Mouse::getXRel(void) const {
-    return this->m_XRel;
+bool Motor2D::Mouse::leftButton(void) {
+    // return if left button mousse is pressed
+    return this->getEvent()->type == SDL_MOUSEBUTTONDOWN && this->getEvent()->button.button == SDL_BUTTON_LEFT;
 }
 
-int Window::Mouse::getYRel(void) const {
-    return this->m_YRel;
+bool Motor2D::Mouse::rightButton(void) {
+    return true;
 }
-
-int

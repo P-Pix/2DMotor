@@ -1,16 +1,20 @@
 #include "../../../include/Window/Event.hpp"
 
-Window::Event::Event(void) {
+Motor2D::Event::Event(void) {
     this->m_Event = SDL_Event();
+    this->m_Window = nullptr;
 }
 
-Window::Event::Event(const SDL_Event& event) {
-    this->m_Event = event;
+Motor2D::Event::Event(const SDL_Event *event, SDL_Window* window) {
+    this->setEvent(event);
+    this->setWindow(window);
 }
 
-Window::Event::~Event(void) {
+Motor2D::Event::~Event(void) {
 }
 
-void Window::Event::poll(void) {
-    SDL_PollEvent(&this->m_Event);
+bool Motor2D::Event::poll(void) {
+    bool exit = SDL_PollEvent(&this->m_Event);
+    this->m_Type = this->m_Event.type;
+    return exit;
 }

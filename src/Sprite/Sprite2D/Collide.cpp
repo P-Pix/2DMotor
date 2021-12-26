@@ -1,12 +1,12 @@
 #include "../../../include/Sprite/Sprite2D.hpp"
 
-bool Sprite::Sprite2D::collide(Sprite::Sprite2D *s1, Sprite::Sprite2D *s2) {
-    ChainedList<Sprite::Pixel *> *pixels1 = Sprite::Sprite2D::outline(s1);
-    ChainedList<Sprite::Pixel *> *pixels2 = Sprite::Sprite2D::outline(s2);
+bool Motor2D::Sprite2D::collide(Motor2D::Sprite2D *s1, Motor2D::Sprite2D *s2) {
+    ChainedList<Motor2D::Pixel *> *pixels1 = Motor2D::Sprite2D::outline(s1);
+    ChainedList<Motor2D::Pixel *> *pixels2 = Motor2D::Sprite2D::outline(s2);
     while (pixels1 != nullptr) {
-        ChainedList<Sprite::Pixel *> *pixels2_copy = pixels2;
+        ChainedList<Motor2D::Pixel *> *pixels2_copy = pixels2;
         while (pixels2_copy != nullptr) {
-            if (Sprite::Sprite2D::collide(pixels1->data, pixels2->data)) {
+            if (Motor2D::Sprite2D::collide(pixels1->data, pixels2->data)) {
                 return true;
             }
             pixels2_copy = pixels2_copy->next;
@@ -16,16 +16,16 @@ bool Sprite::Sprite2D::collide(Sprite::Sprite2D *s1, Sprite::Sprite2D *s2) {
     return false;
 }
 
-bool Sprite::Sprite2D::collide(Sprite::Pixel *p1, Sprite::Pixel *p2) {
+bool Motor2D::Sprite2D::collide(Motor2D::Pixel *p1, Motor2D::Pixel *p2) {
     return (p1->getX() == p2->getX() && p1->getY() == p2->getY());
 }
 
-ChainedList<Sprite::Pixel *> *Sprite::Sprite2D::outline(Sprite::Sprite2D *s) {
-    Tab2D<Sprite::Pixel *> *tab = s->getPixelTab();
-    ChainedList<Sprite::Pixel *> *outline = nullptr;
+ChainedList<Motor2D::Pixel *> *Motor2D::Sprite2D::outline(Motor2D::Sprite2D *s) {
+    Tab2D<Motor2D::Pixel *> *tab = s->getPixelTab();
+    ChainedList<Motor2D::Pixel *> *outline = nullptr;
     for (int i = 0; i < tab->height; i++) {
         for (int j = 0; j < tab->width; j++) {
-            Sprite::Pixel *p = Tab2D_Get(tab, i, j);
+            Motor2D::Pixel *p = Tab2D_Get(tab, i, j);
             if (p != nullptr) {
                 if (i == 0 || i == tab->height - 1 || j == 0 || j == tab->width - 1 ||
                     (Tab2D_Get(tab, i - 1, j) == nullptr || Tab2D_Get(tab, i + 1, j) == nullptr ||

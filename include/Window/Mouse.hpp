@@ -5,19 +5,17 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 
-namespace Window {
-    class Mouse : public Window::Event {
+namespace Motor2D {
+    class Mouse : public Motor2D::Event {
     private:
-        Sint32 m_X = 0;
-        Sint32 m_Y = 0;
+        int m_X;
+        int m_Y;
 
     protected:
-        void setX(int x);
-        void setY(int y);
 
     public:
         Mouse(void);
-        Mouse(const SDL_Event& event);
+        Mouse(const SDL_Event *event, SDL_Window* window);
         ~Mouse(void);
 
         int getX(void) const;
@@ -29,14 +27,10 @@ namespace Window {
         int getWheelX(void) const;
         int getWheelY(void) const;
 
-        bool isLeftButtonDown(void);
-        bool isRightButtonDown(void);
-        bool isMiddleButtonDown(void);
-        bool isLeftButtonUp(void);
-        bool isRightButtonUp(void);
-        bool isMiddleButtonUp(void);
-        bool isLeftButtonClicked(void);
-        bool isRightButtonClicked(void);
-        bool isMiddleButtonClicked(void);
+        /// @return true if the button is pressed
+        bool leftButton(void);
+
+        /// @return true if the button is pressed
+        bool rightButton(void);
     };
 }

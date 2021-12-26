@@ -5,8 +5,8 @@
 
 #include "Rectangle.hpp"
 
-namespace Sprite {
-    class Pixel : public Rectangle {
+namespace Motor2D {
+class Pixel : public Motor2D::Rectangle {
     private:
         void init(SDL_Renderer *renderer, int x, int y, SDL_Color color);
 

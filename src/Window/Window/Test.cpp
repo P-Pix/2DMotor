@@ -4,10 +4,10 @@
 
 int main(int argc, char *argv[]) {
     std::cout << "Test Window" << std::endl;
-    std::cout << "Size RAM : " << sizeof(Window) << std::endl;
-    Window window;
-    Sprite::Sprite2D sprite(window.getRenderer(), "image/bloc.png");
-    ChainedList<Sprite::Sprite2D *> *sprites = ChainedList_Create(&sprite);
+    std::cout << "Size RAM : " << sizeof(Motor2D::Window) << std::endl;
+    Motor2D::Window window;
+    Motor2D::Sprite2D sprite(window.getRenderer(), "image/bloc.png");
+    ChainedList<Motor2D::Sprite2D *> *sprites = ChainedList_Create(&sprite);
     window.update(sprites);
     SDL_RenderPresent(window.getRenderer());
     SDL_Delay(5000);
