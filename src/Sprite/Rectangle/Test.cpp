@@ -5,6 +5,7 @@ int main(int argc, char *argv[]) {
     SDL_Window *window = SDL_CreateWindow("Sprite Rectangle Test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_SHOWN);
     SDL_Color color = {127, 0, 127, 255};
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    std::cout << "Rectangle : " << std::endl;
     Motor2D::Rectangle rectangle(renderer, 0, 0, 100, 100, color);
     rectangle.draw();
     SDL_RenderPresent(renderer);

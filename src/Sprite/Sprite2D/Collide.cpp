@@ -21,15 +21,15 @@ bool Motor2D::Sprite2D::collide(Motor2D::Pixel *p1, Motor2D::Pixel *p2) {
 }
 
 ChainedList<Motor2D::Pixel *> *Motor2D::Sprite2D::outline(Motor2D::Sprite2D *s) {
-    Tab2D<Motor2D::Pixel *> *tab = s->getPixelTab();
+    Structure::Tab2D<Motor2D::Pixel *> *tab = s->getPixelTab();
     ChainedList<Motor2D::Pixel *> *outline = nullptr;
-    for (int i = 0; i < tab->height; i++) {
-        for (int j = 0; j < tab->width; j++) {
-            Motor2D::Pixel *p = Tab2D_Get(tab, i, j);
+    for (int i = 0; i < tab->getHeight(); i++) {
+        for (int j = 0; j < tab->getWidth(); j++) {
+            Motor2D::Pixel *p = tab->get(i, j);
             if (p != nullptr) {
-                if (i == 0 || i == tab->height - 1 || j == 0 || j == tab->width - 1 ||
-                    (Tab2D_Get(tab, i - 1, j) == nullptr || Tab2D_Get(tab, i + 1, j) == nullptr ||
-                     Tab2D_Get(tab, i, j - 1) == nullptr || Tab2D_Get(tab, i, j + 1) == nullptr)) {
+                if (i == 0 || i == tab->getHeight() - 1 || j == 0 || j == tab->getWidth() - 1 ||
+                    (tab->get(i - 1, j) == nullptr || tab->get(i + 1, j) == nullptr ||
+                     tab->get(i, j - 1) == nullptr || tab->get(i, j + 1) == nullptr)) {
                     outline = ChainedList_Add(outline, p);
                 }
             }

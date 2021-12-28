@@ -3,13 +3,13 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 
-#include "../Struct/ChainedList.h"
+#include "../Struct/ChainedList.hpp"
+#include "../Struct/Vector2D.hpp"
 
 namespace Motor2D {
     class Drawable {
     private:
-        int m_x = 0;
-        int m_y = 0;
+        Structure::Vector2D<int> m_Vector2D;
 
         SDL_Color m_Color = {255, 255, 255, 255};
         SDL_Renderer *m_Renderer = nullptr;

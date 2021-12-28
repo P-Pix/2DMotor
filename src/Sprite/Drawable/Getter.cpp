@@ -1,11 +1,11 @@
 #include "../../../include/Sprite/Drawable.hpp"
 
 int Motor2D::Drawable::getX(void) {
-    return this->m_x;
+    return this->m_Vector2D.getX();
 }
 
 int Motor2D::Drawable::getY(void) {
-    return this->m_y;
+    return this->m_Vector2D.getY();
 }
 
 SDL_Color *Motor2D::Drawable::getColor(void) {

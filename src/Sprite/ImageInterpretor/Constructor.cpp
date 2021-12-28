@@ -13,5 +13,5 @@ Motor2D::ImageInterpretor::~ImageInterpretor(void) {
 }
 
 void Motor2D::ImageInterpretor::deleteTab2D(void) {
-    Tab2D_Delete(this->m_Tab2DPixel);
+
 }

@@ -14,8 +14,7 @@ Motor2D::Drawable::Drawable(SDL_Renderer *renderer, int x, int y, Uint8 r, Uint8
 }
 
 void Motor2D::Drawable::init(SDL_Renderer *renderer, int x, int y, SDL_Color color) {
-    this->setX(x);
-    this->setY(y);
+    this->m_Vector2D.set(x, y);
     this->setColor(color);
     this->setRenderer(renderer);
 }

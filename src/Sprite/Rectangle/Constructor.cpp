@@ -18,6 +18,7 @@ Motor2D::Rectangle::~Rectangle(void) {
 
 void Motor2D::Rectangle::init(SDL_Renderer *renderer, int x, int y, int width, int height, SDL_Color color) {
     this->setRect(x, y, width, height);
+    std::cout << "init" << std::endl;
     this->setColor(color);
     this->setRenderer(renderer);
 }

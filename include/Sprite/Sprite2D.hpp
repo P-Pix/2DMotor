@@ -2,8 +2,8 @@
 
 #include <iostream>
 
-#include "../Struct/Tab2D.h"
-#include "../Struct/ChainedList.h"
+#include "../Struct/Tab2D.hpp"
+#include "../Struct/ChainedList.hpp"
 #include "ImageInterpretor.hpp"
 #include "Pixel.hpp"
 
@@ -13,7 +13,7 @@ class Sprite2D : public Motor2D::Pixel {
         int m_XSprite = 0;
         int m_YSprite = 0;
 
-        Tab2D<Motor2D::Pixel *> *m_PixelTab;
+        Structure::Tab2D<Motor2D::Pixel *> m_PixelTab;
 
         void init(SDL_Renderer *renderer, std::string fileName);
 
@@ -24,7 +24,7 @@ class Sprite2D : public Motor2D::Pixel {
 
         void setY(int y);
 
-        void setTab2D(Tab2D<Motor2D::Pixel *> *tab2D);
+        void setTab2D(Structure::Tab2D<Motor2D::Pixel *> *tab2D);
 
     public:
         Sprite2D(SDL_Renderer *renderer, std::string fileName);
@@ -39,7 +39,7 @@ class Sprite2D : public Motor2D::Pixel {
 
         ChainedList<Motor2D::Pixel *> *getListPixel(void);
 
-        Tab2D<Motor2D::Pixel *> *getPixelTab(void);
+        Structure::Tab2D<Motor2D::Pixel *> *getPixelTab(void);
 
         static bool collide(Motor2D::Sprite2D *s1, Motor2D::Sprite2D *s2);
 

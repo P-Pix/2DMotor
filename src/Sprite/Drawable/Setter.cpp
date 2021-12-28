@@ -16,11 +16,11 @@ void Motor2D::Drawable::setColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a) {
 }
 
 void Motor2D::Drawable::setX(int x) {
-    this->m_x = x;
+    this->m_Vector2D.setX(x);
 }
 
 void Motor2D::Drawable::setY(int y) {
-    this->m_y = y;
+    this->m_Vector2D.setY(y);
 }
 
 void Motor2D::Drawable::setA(Uint8 a) {

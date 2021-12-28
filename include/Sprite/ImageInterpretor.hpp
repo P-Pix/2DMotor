@@ -8,12 +8,12 @@
 #include <SFML/Graphics.hpp>
 
 #include "Pixel.hpp"
-#include "../Struct/Tab2D.h"
+#include "../Struct/Tab2D.hpp"
 
 namespace Motor2D {
     class ImageInterpretor {
     private:
-        Tab2D<Motor2D::Pixel *> *m_Tab2DPixel = nullptr;
+        Structure::Tab2D<Motor2D::Pixel *> m_Tab2DPixel;
 
         SDL_Renderer *m_Renderer = nullptr;
 
@@ -42,7 +42,7 @@ namespace Motor2D {
 
         void setRender(SDL_Renderer *renderer);
 
-        Tab2D<Motor2D::Pixel *> *getPixels(void) const;
+        Structure::Tab2D<Motor2D::Pixel *> *getPixels(void);
 
         int getWidth(void) const;
 

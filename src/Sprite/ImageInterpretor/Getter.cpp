@@ -1,7 +1,7 @@
 #include "../../../include/Sprite/ImageInterpretor.hpp"
 
-Tab2D<Motor2D::Pixel *> *Motor2D::ImageInterpretor::getPixels() const {
-    return this->m_Tab2DPixel;
+Structure::Tab2D<Motor2D::Pixel *> *Motor2D::ImageInterpretor::getPixels() {
+    return &this->m_Tab2DPixel;
 }
 
 int Motor2D::ImageInterpretor::getWidth() const {
