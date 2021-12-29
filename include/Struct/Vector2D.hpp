@@ -1,44 +1,33 @@
 #pragma once
 
+#include "Vector1D.hpp"
 #include <iostream>
 
 namespace Structure {
     template<typename T>
-    class Vector2D {
+    class Vector2D : public Vector1D<T> {
     private:
+        T m_Y = 0;
     protected:
-        T m_X;
-        T m_Y;
 
     public:
         Vector2D(void) {
-            this->m_X = 0;
-            this->m_Y = 0;
         }
 
-        Vector2D(T x, T y) {
-            this->m_X = x;
-            this->m_Y = y;
+        Vector2D(T x, T y) : Vector1D<T>(x) {
+            this->setY(y);
         }
 
         Vector2D(const Vector2D<T> &other) {
-            this->m_X = other.m_X;
-            this->m_Y = other.m_Y;
+            this->setX(other.getX());
+            this->setY(other.getY());
         }
 
         ~Vector2D(void) {
         }
 
-        T getX(void) const {
-            return this->m_X;
-        }
-
         T getY(void) const {
             return this->m_Y;
-        }
-
-        void setX(T x) {
-            this->m_X = x;
         }
 
         void setY(T y) {
@@ -51,8 +40,8 @@ namespace Structure {
         }
 
         void move(T x, T y) {
-            this->setX(this->m_X + x);
-            this->setY(this->m_Y + y);
+            this->setX(this->getX() + x);
+            this->setY(this->getY() + y);
         }
 
         Vector2D<T> &operator=(const Vector2D<T> &other) {
@@ -62,19 +51,81 @@ namespace Structure {
         }
 
         Vector2D<T> operator+(const Vector2D<T> &other) const {
-            return Vector2D<T>(this->m_X + other.getX(), this->m_Y + other.getY());
+            return Vector2D<T>(this->getX() + other.getX(), this->getY() + other.getY());
         }
 
         Vector2D<T> operator-(const Vector2D<T> &other) const {
-            return Vector2D<T>(this->m_X - other.getX(), this->m_Y - other.getY());
+            return Vector2D<T>(this->getX() - other.getX(), this->getY() - other.getY());
         }
 
         Vector2D<T> operator*(const Vector2D<T> &other) const {
-            return Vector2D<T>(this->m_X * other.getX(), this->m_Y * other.getY());
+            return Vector2D<T>(this->getX() * other.getX(), this->getY() * other.getY());
         }
 
         Vector2D<T> operator/(const Vector2D<T> &other) const {
-            return Vector2D<T>(this->m_X / other.getX(), this->m_Y / other.getY());
+            return Vector2D<T>(this->getX() / other.getX(), this->getY() / other.getY());
+        }
+        bool operator==(const Vector2D<T> &other) const {
+            return this->getX() == other.getX() && this->getY() == other.getY();
+        }
+        bool operator!=(const Vector2D<T> &other) const {
+            return this->getX() != other.getX() || this->getY() != other.getY();
+        }
+        bool operator<(const Vector2D<T> &other) const {
+            return this->getX() < other.getX() && this->getY() < other.getY();
+        }
+        bool operator>(const Vector2D<T> &other) const {
+            return this->getX() > other.getX() && this->getY() > other.getY();
+        }
+        bool operator<=(const Vector2D<T> &other) const {
+            return this->getX() <= other.getX() && this->getY() <= other.getY();
+        }
+        bool operator>=(const Vector2D<T> &other) const {
+            return this->getX() >= other.getX() && this->getY() >= other.getY();
+        }
+        Vector2D<T> operator+=(const Vector2D<T> &other) {
+            this->setX(this->getX() + other.getX());
+            this->setY(this->getY() + other.getY());
+            return *this;
+        }
+        Vector2D<T> operator-=(const Vector2D<T> &other) {
+            this->setX(this->getX() - other.getX());
+            this->setY(this->getY() - other.getY());
+            return *this;
+        }
+        Vector2D<T> operator*=(const Vector2D<T> &other) {
+            this->setX(this->getX() * other.getX());
+            this->setY(this->getY() * other.getY());
+            return *this;
+        }
+        Vector2D<T> operator/=(const Vector2D<T> &other) {
+            this->setX(this->getX() / other.getX());
+            this->setY(this->getY() / other.getY());
+            return *this;
+        }
+        Vector2D<T> operator+=(T other) {
+            this->setX(this->getX() + other);
+            this->setY(this->getY() + other);
+            return *this;
+        }
+        Vector2D<T> operator-=(T other) {
+            this->setX(this->getX() - other);
+            this->setY(this->getY() - other);
+            return *this;
+        }
+        Vector2D<T> operator*=(T other) {
+            this->setX(this->getX() * other);
+            this->setY(this->getY() * other);
+            return *this;
+        }
+        Vector2D<T> operator/=(T other) {
+            this->setX(this->getX() / other);
+            this->setY(this->getY() / other);
+            return *this;
+        }
+        friend std::ostream &operator<<(std::ostream &os, const Vector2D<T> &vector) {
+            os << "(" << vector.getX() << ", " << vector.getY() << ")";
+            return os;
         }
     };
 }

@@ -37,7 +37,7 @@ class Sprite2D : public Motor2D::Pixel {
 
         void draw(void) override;
 
-        ChainedList<Motor2D::Pixel *> *getListPixel(void);
+        Structure::ChainedList<Motor2D::Pixel *> *getListPixel(void);
 
         Structure::Tab2D<Motor2D::Pixel *> *getPixelTab(void);
 
@@ -55,6 +55,6 @@ class Sprite2D : public Motor2D::Pixel {
          * |---------|      |---------|
          */
 
-        static ChainedList<Motor2D::Pixel *> *outline(Motor2D::Sprite2D *s);
+        static Structure::ChainedList<Motor2D::Pixel *> *outline(Motor2D::Sprite2D *s);
     };
 }

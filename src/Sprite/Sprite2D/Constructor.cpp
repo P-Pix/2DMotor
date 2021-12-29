@@ -19,19 +19,17 @@ void Motor2D::Sprite2D::init(SDL_Renderer *renderer, std::string fileName) {
     this->setTab2D(image.getPixels());
 }
 
-ChainedList<Motor2D::Pixel *> *Motor2D::Sprite2D::getListPixel(void) {
-    ChainedList<Motor2D::Pixel *> *pointer = ChainedList_Create(this->m_PixelTab.get(0, 0));
-    ChainedList<Motor2D::Pixel *> *list = pointer;
+Structure::ChainedList<Motor2D::Pixel *> *Motor2D::Sprite2D::getListPixel(void) {
+    Structure::ChainedList<Motor2D::Pixel *> list(nullptr);
     for (int i = 0; i < this->m_PixelTab.getHeight(); i ++) {
         for (int j = 0; j < this->m_PixelTab.getWidth(); j ++) {
             Pixel *pixel = this->m_PixelTab.get(i, j);
             if (pixel != nullptr) {
-                pointer->next = ChainedList_Create(pixel);
-                pointer = pointer->next;
+                list.add(pixel);
             }
         }
     }
-    return list;
+    return list.getNext();
 }
 
 Structure::Tab2D<Motor2D::Pixel *> *Motor2D::Sprite2D::getPixelTab(void) {

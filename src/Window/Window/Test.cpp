@@ -7,8 +7,8 @@ int main(int argc, char *argv[]) {
     std::cout << "Size RAM : " << sizeof(Motor2D::Window) << std::endl;
     Motor2D::Window window;
     Motor2D::Sprite2D sprite(window.getRenderer(), "image/bloc.png");
-    ChainedList<Motor2D::Sprite2D *> *sprites = ChainedList_Create(&sprite);
-    window.update(sprites);
+    Structure::ChainedList<Motor2D::Sprite2D *> sprites(&sprite);
+    window.update(&sprites);
     SDL_RenderPresent(window.getRenderer());
     SDL_Delay(5000);
     SDL_Quit();

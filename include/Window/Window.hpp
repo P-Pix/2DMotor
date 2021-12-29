@@ -27,10 +27,10 @@ namespace Motor2D {
 
         void destroyRenderer(void);
 
-        ChainedList<Motor2D::Sprite2D *> *m_ListSprite = nullptr;
+        Structure::ChainedList<Motor2D::Sprite2D *> m_ListSprite;
 
-        void setListSprite(ChainedList<Motor2D::Sprite2D *> *listSprite) {
-            this->m_ListSprite = listSprite;
+        void setListSprite(Structure::ChainedList<Motor2D::Sprite2D *> *listSprite) {
+            this->m_ListSprite = *listSprite;
         }
 
     public:
@@ -41,9 +41,9 @@ namespace Motor2D {
 
         bool isOpen(void) const;
 
-        bool update(ChainedList<Motor2D::Sprite2D *> *list);
+        bool update(Structure::ChainedList<Motor2D::Sprite2D *> *list);
 
-        bool update(ChainedList<Motor2D::Pixel *> *list);
+        bool update(Structure::ChainedList<Motor2D::Pixel *> *list);
 
         bool restart(void);
 
@@ -55,8 +55,8 @@ namespace Motor2D {
             return this->m_Window;
         }
 
-        ChainedList<Motor2D::Sprite2D *> *getListSprite(void) {
-            return m_ListSprite;
+        Structure::ChainedList<Motor2D::Sprite2D *> *getListSprite(void) {
+            return &m_ListSprite;
         }
     };
 }

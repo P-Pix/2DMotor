@@ -6,10 +6,6 @@ namespace Structure {
     template<typename T>
     class Tab2D {
     private:
-        size_t m_Width = 0;
-        size_t m_Height = 0;
-        T **m_Tab;
-
         void initTab(void) {
             this->m_Tab = new T *[this->m_Height];
             for (size_t i = 0; i < this->m_Height; i++) {
@@ -18,6 +14,9 @@ namespace Structure {
         }
 
     protected:
+        size_t m_Width = 0;
+        size_t m_Height = 0;
+        T **m_Tab;
 
     public:
         Tab2D(void) {

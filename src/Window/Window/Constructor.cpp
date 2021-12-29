@@ -11,23 +11,23 @@ Motor2D::Window::~Window(void) {
     this->destroyWindow();
 }
 
-bool Motor2D::Window::update(ChainedList<Motor2D::Sprite2D *> *list) {
+bool Motor2D::Window::update(Structure::ChainedList<Motor2D::Sprite2D *> *list) {
     while (list != nullptr) {
-        ChainedList<Motor2D::Pixel *> *listPixel = list->data->getListPixel();
+        Structure::ChainedList<Motor2D::Pixel *> *listPixel = list->getData()->getListPixel();
         if (!this->update(listPixel)) {
             return false;
         }
-        list = list->next;
+        list = list->getNext();
     }
     return true;
 }
 
-bool Motor2D::Window::update(ChainedList<Motor2D::Pixel *> *list) {
+bool Motor2D::Window::update(Structure::ChainedList<Motor2D::Pixel *> *list) {
     while (list != nullptr) {
-        if (!this->drawRect(list->data->getRect())) {
+        if (!this->drawRect(list->getData()->getRect())) {
             return false;
         }
-        list = list->next;
+        list = list->getNext();
     }
     return true;
 }
