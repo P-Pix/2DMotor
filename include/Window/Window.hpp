@@ -9,16 +9,19 @@
 #include "../Sprite/Sprite2D.hpp"
 
 namespace Motor2D {
-    class Window : public Motor2D::Keyboard, public Motor2D::Mouse, public Motor2D::OtherEvent {
+    class Window {
     private:
         SDL_Window *m_Window = nullptr;
         SDL_Renderer *m_Renderer = nullptr;
+        SDL_Event m_Event;
 
-        bool init(void);
+        Motor2D::Keyboard m_Keyboard;
+        Motor2D::Mouse m_Mouse;
+        Motor2D::OtherEvent m_OtherEvent;
 
-        void close(void);
+        void init(const char *Name);
 
-        bool drawRect(SDL_Rect *rect);
+        bool initSDL(void);
 
         bool createWindow(const char *title, int x, int y, int w, int h);
 
@@ -38,6 +41,8 @@ namespace Motor2D {
 
         Window(void);
 
+        Window(const char *Name);
+
         ~Window(void);
 
         bool update(Structure::ChainedList<Motor2D::Sprite2D *> *list);
@@ -45,6 +50,8 @@ namespace Motor2D {
         bool update(Structure::ChainedList<Motor2D::Pixel *> *list);
 
         bool restart(void);
+
+        bool isOpen(void);
 
         SDL_Renderer *getRenderer(void) const {
             return this->m_Renderer;

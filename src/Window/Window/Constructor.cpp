@@ -1,14 +1,28 @@
 #include "../../../include/Window/Window.hpp"
 
 Motor2D::Window::Window(void) {
-    this->init();
-    this->createWindow("Window", 0, 0, 800, 600);
-    this->createRenderer();
+    this->init("Window");
+}
+
+Motor2D::Window::Window(const char *Name) {
+    this->init(Name);
 }
 
 Motor2D::Window::~Window(void) {
     this->destroyRenderer();
     this->destroyWindow();
+}
+
+void Motor2D::Window::init(const char *Name) {
+    this->initSDL();
+    this->createWindow(Name, 0, 0, 800, 600);
+    this->createRenderer();
+    this->m_Keyboard.setWindow(this->m_Window);
+    this->m_Keyboard.setEvent(&this->m_Event);
+    this->m_Mouse.setWindow(this->m_Window);
+    this->m_Mouse.setEvent(&this->m_Event);
+    this->m_OtherEvent.setWindow(this->m_Window);
+    this->m_OtherEvent.setEvent(&this->m_Event);
 }
 
 bool Motor2D::Window::update(Structure::ChainedList<Motor2D::Sprite2D *> *list) {
@@ -24,7 +38,7 @@ bool Motor2D::Window::update(Structure::ChainedList<Motor2D::Sprite2D *> *list) 
 
 bool Motor2D::Window::update(Structure::ChainedList<Motor2D::Pixel *> *list) {
     while (list != nullptr) {
-        if (!this->drawRect(list->getData()->getRect())) {
+        if (!list->getData()->draw()) {
             return false;
         }
         list = list->getNext();
@@ -32,16 +46,8 @@ bool Motor2D::Window::update(Structure::ChainedList<Motor2D::Pixel *> *list) {
     return true;
 }
 
-bool Motor2D::Window::drawRect(SDL_Rect *rect) {
-    if (!SDL_RenderDrawRect(this->m_Renderer, rect)) {
-        std::cout << "Error: " << SDL_GetError() << std::endl;
-        return false;
-    }
-    return true;
-}
-
-bool Motor2D::Window::init(void) {
-    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+bool Motor2D::Window::initSDL(void) {
+    if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
         return false;
     }
@@ -80,8 +86,4 @@ bool Motor2D::Window::restart(void) {
     this->createWindow("Window", 0, 0, 800, 600);
     this->createRenderer();
     return true;
-}
-
-void Motor2D::Window::close(void) {
-
 }

@@ -27,7 +27,7 @@ namespace Motor2D {
 
         ~Drawable(void);
 
-        virtual void draw(void) = 0;
+        virtual bool draw(void) = 0;
 
         int getX(void);
 

@@ -10,13 +10,13 @@ namespace Motor2D {
         SDL_Window* m_Window;
 
     protected:
-        void setEvent(const SDL_Event *event);
-        void setWindow(SDL_Window* window);
 
     public:
         Event(void);
         Event(const SDL_Event *event, SDL_Window* window);
         ~Event(void);
+        void setEvent(const SDL_Event *event);
+        void setWindow(SDL_Window* window);
         bool poll(void);
         SDL_Event* getEvent(void);
     };

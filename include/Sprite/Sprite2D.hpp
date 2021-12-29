@@ -35,7 +35,7 @@ class Sprite2D : public Motor2D::Pixel {
 
         void move(int x, int y);
 
-        void draw(void) override;
+        bool draw(void) override;
 
         Structure::ChainedList<Motor2D::Pixel *> *getListPixel(void);
 

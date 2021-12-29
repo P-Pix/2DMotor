@@ -24,7 +24,7 @@ namespace Motor2D {
 
         ~Rectangle(void);
 
-        void draw(void);
+        bool draw(void) override;
 
         int getWidth(void);
 
