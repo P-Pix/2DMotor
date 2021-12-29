@@ -8,11 +8,14 @@ int Motor2D::Mouse::getY(void) const {
     return this->m_Y;
 }
 
-bool Motor2D::Mouse::leftButton(void) {
-    // return if left button mousse is pressed
-    return this->getEvent()->type == SDL_MOUSEBUTTONDOWN && this->getEvent()->button.button == SDL_BUTTON_LEFT;
+bool Motor2D::Mouse::getLeftButton() const {
+    return this->m_LeftButton;
 }
 
-bool Motor2D::Mouse::rightButton(void) {
-    return true;
+bool Motor2D::Mouse::getRightButton(void) const {
+    return this->m_RightButton;
+}
+
+bool Motor2D::Mouse::getMiddleButton(void) const {
+    return this->m_MiddleButton;
 }

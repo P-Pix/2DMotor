@@ -32,8 +32,7 @@ DATA_WITH_TEST	=	src/Test.cpp\
 					\
 					src/Window/Window/Test.cpp\
 
-FLAGG		=	`sdl-config --cflags --libs`\
-				`sdl2-config --cflags --libs`\
+FLAGG		=	`sdl2-config --cflags --libs`\
 				-lSDL2 -lSDL2_image\
 				-lsfml-graphics -lsfml-window -lsfml-system\
 

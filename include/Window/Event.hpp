@@ -9,8 +9,6 @@ namespace Motor2D {
         SDL_Event m_Event;
         SDL_Window* m_Window;
 
-        Uint32 m_Type;
-
     protected:
         void setEvent(const SDL_Event *event);
         void setWindow(SDL_Window* window);
@@ -20,8 +18,6 @@ namespace Motor2D {
         Event(const SDL_Event *event, SDL_Window* window);
         ~Event(void);
         bool poll(void);
-        bool isQuit(void);
-        Uint32 getType(void);
         SDL_Event* getEvent(void);
     };
 }

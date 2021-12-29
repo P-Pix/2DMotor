@@ -5,10 +5,11 @@
 
 #include "Keyboard.hpp"
 #include "Mouse.hpp"
+#include "OtherEvent.hpp"
 #include "../Sprite/Sprite2D.hpp"
 
 namespace Motor2D {
-    class Window : public Motor2D::Keyboard, public Motor2D::Mouse {
+    class Window : public Motor2D::Keyboard, public Motor2D::Mouse, public Motor2D::OtherEvent {
     private:
         SDL_Window *m_Window = nullptr;
         SDL_Renderer *m_Renderer = nullptr;
@@ -38,8 +39,6 @@ namespace Motor2D {
         Window(void);
 
         ~Window(void);
-
-        bool isOpen(void) const;
 
         bool update(Structure::ChainedList<Motor2D::Sprite2D *> *list);
 

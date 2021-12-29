@@ -8,9 +8,9 @@
 namespace Motor2D {
     class Mouse : public Motor2D::Event {
     private:
-        SDL_MouseMotionEvent m_Motion;
-        SDL_MouseButtonEvent m_Button;
-        SDL_MouseWheelEvent m_Wheel;
+        bool m_LeftButton = false;
+        bool m_RightButton = false;
+        bool m_MiddleButton = false;
 
         int m_X;
         int m_Y;
@@ -24,12 +24,11 @@ namespace Motor2D {
 
         int getX(void) const;
         int getY(void) const;
-        int getXRel(void) const;
-        int getYRel(void) const;
-        int getButton(void) const;
-        int getWheel(void) const;
-        int getWheelX(void) const;
-        int getWheelY(void) const;
+        bool getLeftButton(void) const;
+        bool getRightButton(void) const;
+        bool getMiddleButton(void) const;
+
+        void event(void);
 
         /// @return true if the button is pressed
         bool leftButton(void);

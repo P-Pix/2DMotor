@@ -14,7 +14,5 @@ Motor2D::Event::~Event(void) {
 }
 
 bool Motor2D::Event::poll(void) {
-    bool exit = SDL_PollEvent(&this->m_Event);
-    this->m_Type = this->m_Event.type;
-    return exit;
+    return SDL_PollEvent(&this->m_Event);
 }
