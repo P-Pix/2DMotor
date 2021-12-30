@@ -48,11 +48,11 @@ namespace Structure {
 
         void add(ChainedList<T> *list) {
             if (this->m_Data == nullptr) {
-                this->m_Data = list->getData();
+                this->set(list->getData());
                 return;
             }
             if (this->m_Next == nullptr) {
-                this->m_Next = list;
+                this->set(list);
             } else {
                 this->m_Next->add(list);
             }
