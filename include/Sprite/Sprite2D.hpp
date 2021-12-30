@@ -15,9 +15,11 @@ class Sprite2D : public Motor2D::Pixel {
 
         Structure::Tab2D<Motor2D::Pixel *> m_PixelTab;
 
+        Structure::ChainedList<Motor2D::Pixel *> m_ListPixel;
+
         void init(SDL_Renderer *renderer, std::string fileName);
 
-        void deleteTab2D(void);
+        void makeListPixel(void);
 
     protected:
         void setX(int x);

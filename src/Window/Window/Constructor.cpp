@@ -26,24 +26,30 @@ void Motor2D::Window::init(const char *Name) {
 }
 
 bool Motor2D::Window::update(Structure::ChainedList<Motor2D::Sprite2D *> *list) {
-    while (list != nullptr) {
-        Structure::ChainedList<Motor2D::Pixel *> *listPixel = list->getData()->getListPixel();
-        if (!this->update(listPixel)) {
-            return false;
-        }
-        list = list->getNext();
+    if (list == nullptr) {
+        return true;
     }
-    return true;
+    Structure::ChainedList<Motor2D::Pixel *> *listPixel = list->getData()->getListPixel();
+    if (listPixel == nullptr) {
+        return true;
+    }
+    if (!this->update(listPixel)) {
+        return false;
+    }
+    return this->update(list->getNext());
 }
 
 bool Motor2D::Window::update(Structure::ChainedList<Motor2D::Pixel *> *list) {
-    while (list != nullptr) {
-        if (!list->getData()->draw()) {
-            return false;
-        }
-        list = list->getNext();
+    if (list == nullptr) {
+        return true;
     }
-    return true;
+    if (list->getData() == nullptr) {
+        return true;
+    }
+    if (!list->getData()->draw()) {
+        return false;
+    }
+    return this->update(list->getNext());
 }
 
 bool Motor2D::Window::initSDL(void) {
